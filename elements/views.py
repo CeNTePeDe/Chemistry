@@ -23,16 +23,23 @@ class ElementsAPIView(APIView):
     def post(self, request):
         serializer = ElementsSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        post_new = Elements.objects.create(
-            name=request.data['name'],
-            content=request.data['content'],
-            molar_mass=request.data['molar_mass'],
-            characteristics_id=request.data['characteristics_id'],
-            period_id=request.data['period_id'],
-            configuration_id=request.data['configuration_id'],
+        serializer.save()
 
-        )
-        return Response({'post': ElementsSerializer(post_new).data})
+        return Response({'post': serializer.data})
+
+    def put(self, request, *args, **kwargs):
+        pk = kwargs.get('pk', None)
+        if not pk:
+            return Response({"error":"Method Put not ellowed"})
+
+        try:
+            instance = Elements.objects.get(pk=pk)
+        except:
+            return Response({"error": "Object does not exists"})
+        serializer = ElementsSerializer(data=request.data, instance=instance)
+        serializer.is_valid(raise_exception=True)
+        return Response({'post': serializer.data})
+
 
 
 def index(request):
