@@ -16,11 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from elements.views import ElementsAPIView
+from elements.views import ElementsViewSet
+from rest_framework import routers
+
+router = routers.SimpleRouter()
+router.register(r'element', ElementsViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/elements_list/', ElementsAPIView.as_view()),   #(api/версия/название_list)
-    path('api/v1/elements_list/<int:pk>/', ElementsAPIView.as_view()),
+    path('api/v1/', include(router.urls)), # коллекция генерируется авторматически, после того как мы создали экземпляр класса
+                # http://127.0.0.1:8000/api/v1/element
+    #path('api/v1/elements_list/', ElementsViewSet.as_view({'get':'list'})),   #(api/версия/название_list)
+    #path('api/v1/elements_list/<int:pk>/', ElementsViewSet.as_view({'put':'update'})),
     path('', include('elements.urls')),
 ]
