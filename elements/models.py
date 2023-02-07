@@ -1,7 +1,9 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
 # Create your models here.
+
 
 
 class Characteristics(models.Model):
@@ -52,7 +54,7 @@ class Elements(models.Model):
                                verbose_name='Период', )
     configuration = models.ForeignKey('Configuration', on_delete=models.CASCADE, help_text='выберите конфигурации',
                                       null=False, verbose_name='Конфигурация', )
-
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
     def __str__(self):
         return self.name
 
