@@ -130,5 +130,8 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDER_CLASSES':[
         'rest_framework.renders.JSONRenderer',
         'rest_framework.renders.BrowsableAPIRenderer',
+    ],
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.AllowAny',
     ]
 }
