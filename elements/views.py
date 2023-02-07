@@ -8,6 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.decorators import action
 
 from elements.models import Elements
+from elements.permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 from elements.serializers import ElementsSerializer
 
 class ElementsAPIList(generics.ListCreateAPIView):
@@ -18,10 +19,13 @@ class ElementsAPIList(generics.ListCreateAPIView):
 class ElementsAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Elements.objects.all()
     serializer_class = ElementsSerializer
+    permission_classes = (IsOwnerOrReadOnly,)
 
 class ElementsAPIDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Elements.objects.all()
     serializer_class = ElementsSerializer
-    permission_classes = (IsAdminUser, )
+    permission_classes = (IsAdminOrReadOnly, )
+
+
 def index(request):
     return HttpResponse('Привет')
