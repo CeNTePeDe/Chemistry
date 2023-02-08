@@ -14,8 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-
+from django.urls import path, include, re_path
 
 from rest_framework import routers
 
@@ -24,6 +23,8 @@ from elements.views import ElementsAPIList, ElementsAPIUpdate, ElementsAPIDestro
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/drf-auth/', include('rest_framework.urls')), #session authentication
+    path('api/v1/auth', include('djoser.urls')),
+    re_path(r'^auth', include('djoser.urls.authtoken')),
     path('api/v1/elements/', ElementsAPIList.as_view()),
     path('api/v1/elements/<int:pk>/', ElementsAPIUpdate.as_view()),
     path('api/v1/elements_delete/<int:pk>/', ElementsAPIDestroy.as_view()),
