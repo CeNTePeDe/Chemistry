@@ -23,6 +23,7 @@ from elements.views import ElementsAPIList, ElementsAPIUpdate, ElementsAPIDestro
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/drf-auth/', include('rest_framework.urls')), #session authentication
     path('api/v1/elements/', ElementsAPIList.as_view()),
     path('api/v1/elements/<int:pk>/', ElementsAPIUpdate.as_view()),
     path('api/v1/elements_delete/<int:pk>/', ElementsAPIDestroy.as_view()),
