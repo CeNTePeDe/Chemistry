@@ -2,6 +2,7 @@ from django.forms import model_to_dict
 from rest_framework import generics, viewsets
 from django.http import HttpResponse
 from django.shortcuts import render
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -20,6 +21,7 @@ class ElementsAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Elements.objects.all()
     serializer_class = ElementsSerializer
     permission_classes = (IsOwnerOrReadOnly,)
+    authentication_classes = (TokenAuthentication, )
 
 class ElementsAPIDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Elements.objects.all()
