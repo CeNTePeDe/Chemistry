@@ -36,5 +36,19 @@ class ElementsAPIDestroy(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAdminOrReadOnly, )
 
 
+def element_page(request):
+    element = Elements.objects.all()
+
+    # добавим сессии
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
+    context = {'element': element,}
+    return render(request, 'elements\element.html', context)
+
 def index(request):
-    return HttpResponse('Привет')
+    # добавим сессии
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+    context = {'num_visits':num_visits}
+    return render(request, 'elements\index.html', context)
