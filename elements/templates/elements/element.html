@@ -1,0 +1,27 @@
+{% extends "elements/base.html" %}
+
+{% block content %}
+<h3><b>Элементы переодической ситемы</b></h3>
+<table  style="width: 600px;">
+    <thead style="b">
+    <tr>
+        <td><b>Название элемента</b></td>
+        <td><b>Контент</b></td>
+
+    </tr>
+    </thead>
+
+    {% if element %}
+    {% for elements in element.all %}
+    <tr>
+        <td>{{ elements.name }}</td>
+        <td>{{ elements.content }}</td>
+
+
+    </tr>
+    {% endfor %}
+    {% else %}
+    <p>В базе нет данных элементов</p>
+    {% endif %}
+
+{% endblock %}

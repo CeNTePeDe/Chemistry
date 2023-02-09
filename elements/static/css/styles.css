@@ -1,0 +1,43 @@
+
+body {
+     background: linear-gradient(90deg, #FFCF18, #FF8818);
+     font-family: "Times New Roman", Georgia, Serif;
+     font-style: initial;
+}
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: linear-gradient(45deg, #FF8818, #FFCF18);
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-styler: none;
+    font-size: 1.8em
+
+}
+li{
+    list-style-position: inside;
+    }
