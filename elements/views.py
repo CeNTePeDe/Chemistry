@@ -1,4 +1,5 @@
 from django.forms import model_to_dict
+from django.views import generic
 from rest_framework import generics, viewsets
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -36,15 +37,17 @@ class ElementsAPIDestroy(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAdminOrReadOnly, )
 
 
-def element_page(request):
-    element = Elements.objects.all()
+#def element_page(request):
+#    element = Elements.objects.all()
+#
+#
+#    context = {'element': element,}
+#    return render(request, 'elements\element.html', context)
 
-    # добавим сессии
-    num_visits = request.session.get('num_visits', 0)
-    request.session['num_visits'] = num_visits + 1
-
-    context = {'element': element,}
-    return render(request, 'elements\element.html', context)
+class ElementsListView(generic.ListView):
+    model = Elements
+    template_name = 'elements/element.html'
+    paginate_by = 5
 
 def index(request):
     # добавим сессии
@@ -52,3 +55,9 @@ def index(request):
     request.session['num_visits'] = num_visits + 1
     context = {'num_visits':num_visits}
     return render(request, 'elements\index.html', context)
+
+
+class ElementsDetailView(generic.DetailView):
+    model = Elements
+    template_name = 'elements/elements_list.html'
+    pk_url_kwarg = 'elements_pk'
