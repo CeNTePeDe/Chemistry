@@ -1,7 +1,8 @@
 from django.urls import path
 
-from elements.views import index, element_page
+from elements.views import index,  ElementsDetailView, ElementsListView
 
 urlpatterns = [
-    path('/', element_page, name='element_page'),
+    path('', ElementsListView.as_view(), name='element_page'),
+    path('element/<int:elements_pk>/', ElementsDetailView.as_view(), name='elements-detail'),
 ]
