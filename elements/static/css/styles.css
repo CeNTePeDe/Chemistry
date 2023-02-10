@@ -5,6 +5,7 @@ body {
      font-style: initial;
 }
 /* Add a black background color to the top navigation */
+h3{font-size: 1.5em;}
 .topnav {
     background-color: linear-gradient(45deg, #FF8818, #FFCF18);
     overflow: hidden;
@@ -35,9 +36,24 @@ body {
     margin-top: 20px;
     padding: 0;
     list-styler: none;
+    font-size: 1.8em;
+}
+li a {
+    display: block;
+    width: 60px;
+}
+table {
+   border-spacing: 10px 20px;
+   border-collapse: separate;
+   border-spacing: 10px 20px;
+}
+tr{
+    margin-top: 20px;
+    padding: 0;
+    list-styler: none;
     font-size: 1.8em
 
 }
-li{
-    list-style-position: inside;
-    }
+td{
+}
+
