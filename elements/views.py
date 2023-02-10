@@ -1,8 +1,10 @@
 from django.forms import model_to_dict
+from django.urls import reverse_lazy
 from django.views import generic
+from django.views.generic import FormView
 from rest_framework import generics, viewsets
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
@@ -10,6 +12,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import action
 
+from elements.forms import ContactForm
 from elements.models import Elements
 from elements.permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 from elements.serializers import ElementsSerializer
@@ -61,3 +64,12 @@ class ElementsDetailView(generic.DetailView):
     model = Elements
     template_name = 'elements/elements_list.html'
     pk_url_kwarg = 'elements_pk'
+
+class ContactFormView(FormView):
+    form_class = ContactForm
+    template_name = 'elements/contact.html'
+    success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return redirect('index')
