@@ -1,27 +1,28 @@
 {% extends "elements/base.html" %}
 
 {% block content %}
-<h3><b>Элементы переодической ситемы</b></h3>
-<table  style="width: 600px;">
-    <thead style="b">
-    <tr>
-        <td><b>Название элемента</b></td>
-        <td><b>Контент</b></td>
+    <h3><b>Элементы переодической ситемы</b></h3>
+    <table>
+        <thead style="b">
+        <tr>
+            <td><b>Название элемента</b></td>
+            <td><b>Символ</b></td>
+            <td><b>Контент</b></td>
 
-    </tr>
-    </thead>
+        </tr>
+        </thead>
 
-    {% if element %}
-    {% for elements in element.all %}
-    <tr>
-        <td>{{ elements.name }}</td>
-        <td>{{ elements.content }}</td>
+    {% if elements_list %}
+    {% for elements in elements_list.all %}
+        <tr>
+            <td><a href="{{ elements.get_absolute_url }}" >{{ elements.name}}</a></td>
+            <td><b>{{ elements.simbol }}</b></td>
+            <td>{{ elements.content|truncatewords:50 }}</td>
+        </tr>
 
-
-    </tr>
     {% endfor %}
     {% else %}
-    <p>В базе нет данных элементов</p>
+        <p>Нет элементов</p>
     {% endif %}
-
+    </table>
 {% endblock %}
