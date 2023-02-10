@@ -18,12 +18,15 @@ from django.urls import path, include, re_path
 
 from rest_framework import routers
 
-from elements.views import ElementsAPIList, ElementsAPIUpdate, ElementsAPIDestroy, index
+from elements.views import ElementsAPIList, ElementsAPIUpdate, ElementsAPIDestroy, index, ContactFormView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('elements/', include('elements.urls')),
+    path('contact/', ContactFormView.as_view(), name='contact'),
+
+
     path('api/v1/drf-auth/', include('rest_framework.urls')),  # session authentication
     path('api/v1/auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
