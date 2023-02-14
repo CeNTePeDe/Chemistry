@@ -42,6 +42,7 @@ class Configuration(models.Model):
 class Elements(models.Model):
     name = models.CharField(max_length=20, help_text='Введите название элемента', verbose_name='элемент')
     simbol = models.CharField(max_length=5, help_text='Введите символ элемента', verbose_name='символ')
+    image = models.ImageField(upload_to='element_images', null=True, blank=True, verbose_name='молярная масса')
     content = models.TextField(max_length=1000, help_text='Введите краткое описание элемента',
                                verbose_name='об элементе')
     molar_mass = models.FloatField(max_length=10, help_text='Ведите молярную массу элемента',
