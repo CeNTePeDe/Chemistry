@@ -1,18 +1,18 @@
-
+font{
+    font-family: cursive;}
 body {
-     background: linear-gradient(90deg, #FFCF18, #FF8818);
+     background: linear-gradient(90deg,#a3adc9, #6087a3);
      font-family: "Times New Roman", Georgia, Serif;
      font-style: initial;
 }
 /* Add a black background color to the top navigation */
-h3{font-size: 1.5em;}
+h3  {font-size: 1.5em;}
 .topnav {
-    background-color: linear-gradient(45deg, #FF8818, #FFCF18);
     overflow: hidden;
 }
 
 /* Style the links inside the navigation bar */
-.topnav a {
+.topnav  a {
     float: right;
     color: #f2f2f2;
     text-align: center;
@@ -20,40 +20,55 @@ h3{font-size: 1.5em;}
     text-decoration: none;
     font-size: 17px;
 }
-
 /* Change the color of links on hover */
 .topnav a:hover {
-    background-color: #ddd;
+    background-color: #d9c4ab;
     color: black;
 }
-
 /* Add a color to the active/current link */
 .topnav a.active {
-    background-color: #4CAF50;
+    background-color: #e9a37f;
     color: white;
 }
 .sidebar-nav {
     margin-top: 20px;
     padding: 0;
-    list-styler: none;
+    color: #042b7d;
+    font-family: cursive;
+    list-styler: outside;
     font-size: 1.8em;
 }
+.sidebar-nav a.activate{
+    background-color: #e9a37f;
+    color: white;
+}
+.sidebar-nav a:hover {
+    background-color: #d9c4ab;
+    color: black;
+
 li a {
     display: block;
     width: 60px;
 }
-table {
+.element_detail p{
+    margin-top: 20px;
+    padding: 0;
+    list-styler: none;
+    font-size: 1.8em;
+    text-align:justify;
+}
+.content-element table {
    border-spacing: 10px 20px;
    border-collapse: separate;
    border-spacing: 10px 20px;
+   text-align:justify;
 }
 tr{
     margin-top: 20px;
     padding: 0;
     list-styler: none;
     font-size: 1.8em
+}
+.pagination {
 
 }
-td{
-}
-

@@ -22,7 +22,7 @@
 {% block head %}
     <img scr="{% static 'images/logotip.jpg' %}"
     style="width:100px; height:100px;" align="absmiddle" >
-    <font size="7" color="grey"> Сайт "Химия"</font>
+    <font size="7"> Сайт "Химия"</font>
 {% endblock %}
 
 </head>
@@ -37,7 +37,7 @@
                     <li><a href="{% url 'element_page' %}">Элементы</a></li>
                     <li><a href="#">Статьи</a></li>
                     <li><a href="#">Эксперименты</a></li>
-                    <li><a href="#">Обратная связь</a></li>
+                    <li><a href="{% url 'contact' %}">Обратная связь</a></li>
 
                 </ul>
                 {% endblock %}
