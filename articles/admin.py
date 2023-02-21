@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from articles.models import Rubric, Key_word, Articles
+
+admin.site.register(Rubric)
+admin.site.register(Key_word)
+admin.site.register(Articles)
