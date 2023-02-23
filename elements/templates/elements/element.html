@@ -8,6 +8,7 @@
         <tr>
             <td><b>Название элемента</b></td>
             <td><b>Символ</b></td>
+            <td><b>Изображение</b></td>
             <td><b>Контент</b></td>
 
         </tr>
@@ -16,9 +17,12 @@
     {% if elements_list %}
     {% for elements in elements_list.all %}
         <tr>
-            <td><a href="{{ elements.get_absolute_url }}" >{{ elements.name}}</a></td>
+            <td>{{ elements.name}}</td>
             <td><b>{{ elements.simbol }}</b></td>
-            <td>{{ elements.content|truncatewords:50 }}</td>
+            <td><img src="{{ elements.image.url }}" width="150" height="150" alt="картинка"></td>
+            <td>{{ elements.content|truncatewords:50|linebreaks }}
+                         <a href="{{ elements.get_absolute_url }}">Читать пост</a>   </td>
+            <td class="link-read-post"> </td>
         </tr>
 
     {% endfor %}

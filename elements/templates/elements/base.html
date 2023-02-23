@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script scr="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script scr="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <link type="text/css" rel="stylesheet" href="{% static 'elements/css/styles.css'%}">
 {% block topnav %}
     <div class="topnav">
         <a class="active" href="#home">Home</a>
@@ -20,13 +20,13 @@
 {% endblock %}
 
 {% block head %}
-    <img scr="{% static 'images/logotip.jpg' %}"
-    style="width:100px; height:100px;" align="absmiddle" >
+    <img scr="{% static 'elements/image/logotip.jpg'%}"
+    style="width:100px; height:100px;" align="absmiddle" alt="logo">
     <font size="7"> Сайт "Химия"</font>
 {% endblock %}
 
 </head>
-<body bgcolor="#000" background="{% static 'images/back.jpg' %}">
+<body class = "main_body">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-2">
@@ -36,14 +36,14 @@
                     <li><a href="{% url 'index' %}"> Главная страница</a></li>
                     <li><a href="#">Ученые</a></li>
                     <li><a href="{% url 'element_page' %}">Элементы</a></li>
-                    <li><a href="#">Статьи</a></li>
+                    <li><a href="{% url 'articles'%}">Статьи</a></li>
                     <li><a href="{% url 'contact' %}">Обратная связь</a></li>
 
                 </ul>
                 {% endblock %}
 
             </div>
-            <div class="col-sm-10">
+            <div class="main">
                 {% block content %}  {% endblock %}
                 {% block pagination %}
                     {% if is_paginated %}
