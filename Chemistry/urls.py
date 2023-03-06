@@ -26,6 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('elements/', include('elements.urls')),
+    path('articles/', include('articles.urls')),
+    path('users/', include('users.urls')),
     path('contact/', ContactFormView.as_view(), name='contact'),
 
 
