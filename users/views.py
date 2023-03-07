@@ -16,8 +16,11 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
-                return HttpResponseRedirect('/')
-
+                return HttpResponseRedirect('profile/')
+    else:
+        form = UserLoggingForm()
+    context = {'form': form}
+    return render(request,'users/login.html', context)
 
 def registration(request):
     if request.method == 'POST':
@@ -43,7 +46,8 @@ def profile(request):
         form = UserProfileForm()
 
     context = {'form': form}
-    return render(request, 'users/profil.html', context)
+    return render(request, 'users/profile.html', context)
+
 
 def logout(request):
     auth.logout(request)
