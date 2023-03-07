@@ -8,6 +8,7 @@ class ElementsAdmin(admin.ModelAdmin):
 
     list_display = ('id', 'name', 'simbol', 'user')
     list_filter = ('name',)
+    search_fields = ('simbol__startswith',)
 
 
 admin.site.register(Configuration)
