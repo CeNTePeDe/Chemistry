@@ -1,0 +1,36 @@
+{% extends "elements\base.html" %}
+{% block content %}
+<h3><b>Список всех элементов в БД</b></h3>
+<table  style="width: 600px;">
+    <thead style="b">
+    <tr>
+        <td><b>ID</b></td>
+        <td><b>Элемент</b></td>
+        <td><b>Символ</b></td>
+    </tr>
+    </thead>
+
+    {% if element %}
+    {% for element in elements.all %}
+    <tr>
+        <td>{{ element.id }}</td>
+        <td>{{ element.name }}</td>
+        <td>{{ element.simbol }}</td>
+        <td><a href="/edit/{{element.id}}">Изменить</a></td>
+        <td><a href="/delete/{{element.id}}">Удалить</a></td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <p>нет элементов</p>
+    {% endif %}
+</table>
+
+<h3>Добавить элемент'</h3>
+<form method='post' action="/create/">
+    {% csrf_token %}
+    <table>
+        {{ form }}
+    </table>
+    <input type="submit" value="Сохранить">
+</form>
+{% endblock %}
