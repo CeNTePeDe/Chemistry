@@ -29,7 +29,7 @@ class UserRegistrationForm(UserCreationForm):
 class UserProfileForm(UserChangeForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Введите имя'}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Введите фамилию'}))
-    image_field = forms.ImageField(widget=forms.ImageField(attrs={'placeholder': 'Фото'}), required=False)
+    image_field = forms.ImageField(widget=forms.ImageField(),  required=False)
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Введите никнейм'}))
     email = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Введите имейл'}))
     education = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Введите образование'}))
