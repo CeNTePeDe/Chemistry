@@ -1,0 +1,37 @@
+{% extends "elements\base.html" %}
+
+{% block content %}
+<h3>Текущие сведения о элементе</h3>
+<h4>{{element.id}}  {{ element.simbol }}</h4>
+<h4>{{author.name}} </h4>
+<form method="post">
+    {% csrf_token %}
+    <p>
+        <label>Изменение или добавление контента</label><br>
+        <input type="text" name="content"
+            value="{{ element.content}}"/>
+    </p>
+    <p>
+        <label>Изменить молярную массу</label><br>
+        <input type="number" name="molar_mass"
+            value="{{ element.molar_mass}}"/>
+    </p>
+    <p>
+        <label>Изменить характеристику</label><br>
+        <input type="text" name="characteristics"
+            value="{{ element.characteristics}}"/>
+    </p>
+    <p>
+        <label>Изменить период</label><br>
+        <input type="text" name="period"
+            value="{{ element.period }}"/>
+    </p>
+    <p>
+        <label>Изменить конфигурацию </label><br>
+        <input type="text" name="configuration"
+            value="{{ element.configuration}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+
+{% endblock %}

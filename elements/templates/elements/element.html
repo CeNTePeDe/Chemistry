@@ -1,6 +1,13 @@
 {% extends "elements/base.html" %}
 
 {% block content %}
+<div>
+        <form action="{% url 'search'%}" method="post">
+            {% csrf_token %}
+                <input class="Search" type="search" placeholder="input element" aria-label="Search" name="search">
+                <button class="btn" type="submit">Search</button>
+        </form>
+</div>
     <h2><b>Элементы переодической ситемы</b></h2>
     <div class="content-element">
     <table>
