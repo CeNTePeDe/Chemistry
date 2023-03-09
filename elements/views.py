@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import FormView, UpdateView, DeleteView, CreateView, ListView
@@ -46,16 +47,17 @@ class ElementsListView(generic.ListView):
     paginate_by = 5
 
 
-class Search(ListView):
+class SearchResult(ListView):
     """Поиск по элементу"""
+    model = Elements
+    template_name = 'elements/search_result.html'
 
-    def get_queryset(self):
-        return Elements.objects.filter(name__icontains=self.request.GET.get("search"))
+    def get_queryset(self):  # новый
+        query = self.request.GET.get('q')
+        q = query.title()
+        object_list = Elements.objects.filter(name__startswith=q)
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['search'] = self.request.GET.get("search")
-        return context
+        return object_list
 
 
 def index(request):
