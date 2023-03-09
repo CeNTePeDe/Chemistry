@@ -1,0 +1,13 @@
+{% extends "elements/base.html" %}
+
+{% block content %}
+{% if elements_list %}
+    {% for elements in elements_list.all %}
+
+            <h3><a href="{{ elements.get_absolute_url }}">{{ elements.name}}</a></h3>
+    {% endfor %}
+    {% else %}
+            <h3>Совпадений не найдено</h3>
+
+{% endif %}
+{% endblock %}
