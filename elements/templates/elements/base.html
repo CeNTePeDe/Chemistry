@@ -35,9 +35,13 @@
                     <li><a href="{% url 'index' %}"> Главная страница</a></li>
                     <li><a href="#">Ученые</a></li>
                     <li><a href="{% url 'element_page' %}">Элементы</a></li>
+                        {% if user.is_authenticated  %}
+                        <ul> Пользователь {{ user.get_username }}</ul>
+                        <ul><a href="{% url 'element_add' %}">Исправление</a></ul>
+                        {% endif %}
+
                     <li><a href="{% url 'articles'%}">Статьи</a></li>
                     <li><a href="{% url 'contact' %}">Обратная связь</a></li>
-
                 </ul>
                 {% endblock %}
 
