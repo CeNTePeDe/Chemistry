@@ -16,7 +16,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
-                return HttpResponseRedirect('profile/')
+                return HttpResponseRedirect('/')
     else:
         form = UserLoggingForm()
     context = {'form': form}
