@@ -9,7 +9,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
 
-from elements.forms import ContactForm
+from elements.forms import ContactForm, ElementsForm
 from elements.models import Elements
 from elements.permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 from elements.serializers import ElementsSerializer
@@ -45,6 +45,11 @@ class ElementsListView(generic.ListView):
     model = Elements
     template_name = 'elements/element.html'
     paginate_by = 5
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
 
 
 class SearchResult(ListView):
@@ -54,9 +59,8 @@ class SearchResult(ListView):
 
     def get_queryset(self):  # новый
         query = self.request.GET.get('q')
-        q = query.title()
-        object_list = Elements.objects.filter(name__startswith=q)
-
+        q = query.title().strip()
+        object_list = Elements.objects.filter(name__istartswith=q)
         return object_list
 
 
@@ -84,10 +88,20 @@ class ContactFormView(FormView):
         return redirect('index')
 
 
+
+
+
+
 class ElementsUpdate(UpdateView):
     model = Elements
-    fields = '__all__'
+    form_class = ElementsForm
+    pk_url_kwarg = 'elements_pk'
     success_url = reverse_lazy('element_page')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['configuration'] = configuration.objects.all()
+        return context
 
 
 class ElementsDelete(DeleteView):
