@@ -7,7 +7,7 @@ urlpatterns = [
     path('', ElementsListView.as_view(), name='element_page'),
     path('search/', SearchResult.as_view(), name='search_results'),
     path('element/<int:elements_pk>/', ElementsDetailView.as_view(), name='elements-detail'),
-    path('element/add', ElementsUpdate.as_view() , name='element_add'),
+    path('element/add', ElementsUpdate.as_view(), name='element_add'),
 ]
 
 urlpatterns += [
