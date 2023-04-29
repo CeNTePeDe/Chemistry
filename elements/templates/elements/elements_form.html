@@ -1,0 +1,12 @@
+{% extends "elements\base.html" %}
+{% block content %}
+
+<h3>Добавить элемент</h3>
+<form method='post' action="">
+    {% csrf_token %}
+    <table>
+        {{ form }}
+    </table>
+    <input type="submit" value="Добавить">
+</form>
+{% endblock %}

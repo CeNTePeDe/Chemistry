@@ -37,7 +37,8 @@
                     <li><a href="{% url 'element_page' %}">Элементы</a></li>
                         {% if user.is_authenticated  %}
                         <ul> Пользователь {{ user.get_username }}</ul>
-                        <ul><a href="{% url 'element_add' %}">Исправление элементов</a></ul>
+                        <ul><a href="{% url 'element_create' %}">Добавление элемента</a></ul>
+                        <ul><a href="#">Изменение</a></ul>
                         <ul><a href="#">Сортировка</a></ul>
                         {% endif %}
 
